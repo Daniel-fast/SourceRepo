@@ -1,0 +1,2 @@
+print("Ecommerce initialized successfully")
+
