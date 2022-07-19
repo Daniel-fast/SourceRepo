@@ -7,6 +7,9 @@ name = "pypi"
 django = "==2.1.7"
 pillow = "*"
 django-tastypie = "*"
+gunicorn = "*"
+setuptools = "*"
+whitenoise = "*"
 
 [dev-packages]
 
