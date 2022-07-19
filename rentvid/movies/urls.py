@@ -6,5 +6,7 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.index, name='index') #this is the root of the url
+    path('', views.index, name='movies_index'), #this is the root of the url
+    path('<movie_id>', views.detail, name='movies_detail')
+
 ]
