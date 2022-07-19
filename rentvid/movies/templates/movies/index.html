@@ -4,21 +4,25 @@
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th>Title</th>
                 <th>Genre</th>
                 <th>Stock</th>
                 <th>Daily Rate</th>
+                <th>Title</th>
             </tr>
         </thead>
-        <tbody>
+        <body>
             {% for movie in movies %}
-            <tr>
-                <td>{{ movie.title }}</td>
-                <td>{{ movie.genre }}</td>
-                <td>{{ movie.number_in_stock }}</td>
-                <td>{{ movie.daily_rate }}</td>
-            </tr>
+                <tr>
+                    <td>
+                        {{ movie.genre }}
+                    </td>
+                    <td>{{ movie.number_in_stock }}</td>
+                    <td>{{ movie.daily_rate }}</td>
+                    <td>
+                        <a href="{% url 'movies:detail' movie.id %}"> {{ movie.title }} </a> 
+                    </td>
+                </tr>
             {% endfor %}
-        </tbody>
+        </body>
     </table>
 {% endblock content_block %}
