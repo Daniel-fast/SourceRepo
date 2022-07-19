@@ -1,0 +1,11 @@
+BEGIN;
+--
+-- Create model Genre
+--
+CREATE TABLE "movies_genre" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(255) NOT NULL);
+--
+-- Create model Movie
+--
+CREATE TABLE "movies_movie" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "title" varchar(255) NOT NULL, "release_year" integer NOT NULL, "number_in_stock" varchar(100) NOT NULL, "daily_rate" real NOT NULL, "genre_id" integer NOT NULL REFERENCES "movies_genre" ("id") DEFERRABLE INITIALLY DEFERRED);
+CREATE INDEX "movies_movie_genre_id_2b557368" ON "movies_movie" ("genre_id");
+COMMIT;

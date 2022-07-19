@@ -1,0 +1,80 @@
+
+
+
+pipenv install django==2.1
+
+django-admin startproject vidly .
+
+python manage.py startapp movies
+
+python manage.py createsuperuser
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+python manage.py runserver
+
+
+
+
+Name: Django
+Version: 4.0.6
+Summary: A high-level Python web framework that encourages rapid development and clean, pragmatic design.
+Home-page: https://www.djangoproject.com/
+Author: Django Software Foundation
+Author-email: foundation@djangoproject.com
+License: BSD-3-Clause
+Location: /home/da70br/.local/share/virtualenvs/vidly-kh55QSCx/lib/python3.10/site-packages
+Requires: asgiref, sqlparse
+Required-by: 
+
+
+
+
+
+Here is what I did to solve this problem:
+
+1. Go to the virtual environment and install django@2.1.7
+
+	pip install django==2.1.7
+	
+2. Delete the db.sqlite3 file in your root folder.
+
+3. Create the new db.sqlite3 in your root folder.
+
+4. Re-run migrations:
+
+	python3 manage.py makemigrations
+
+	python3 manage.py migrate
+
+
+
+ pipenv install Django --upgrade
+ 
+ sqlite3 cache.db "pragma integrity_check;"
+ 
+IMPORTANT: To known the sql commands django uses to make a migrate* process use:
+ python manage.py sqlmigrate movies 0001 > migrate_movie.txt
+ 
+ *to use the movie.models and apply to the db.sqlite3
+
+
+migrate_movie.txt (CONTENT) 
+ BEGIN;
+--
+-- Create model Genre
+--
+CREATE TABLE "movies_genre" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(255) NOT NULL);
+--
+-- Create model Movie
+--
+CREATE TABLE "movies_movie" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, 
+												"title" varchar(255) NOT NULL, 
+												"release_year" integer NOT NULL, 
+												"number_in_stock" varchar(100) NOT NULL, 
+												"daily_rate" real NOT NULL, 
+												"genre_id" integer NOT NULL REFERENCES "movies_genre" ("id") DEFERRABLE INITIALLY DEFERRED);
+CREATE INDEX "movies_movie_genre_id_2b557368" ON "movies_movie" ("genre_id");
+COMMIT;
