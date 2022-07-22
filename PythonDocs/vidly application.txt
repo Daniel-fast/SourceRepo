@@ -78,3 +78,9 @@ CREATE TABLE "movies_movie" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
 												"genre_id" integer NOT NULL REFERENCES "movies_genre" ("id") DEFERRABLE INITIALLY DEFERRED);
 CREATE INDEX "movies_movie_genre_id_2b557368" ON "movies_movie" ("genre_id");
 COMMIT;
+
+
+
+ python manage.py runserver
+
+https://answers.microsoft.com/en-us/windows/forum/all/your-administrator-has-blocked-this-application/ea35b93d-6218-42aa-b7b7-fd9b3aa32968
